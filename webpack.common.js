@@ -1,15 +1,15 @@
-const path = require('path');
+const path = require("path");
 const Dotenv = require("dotenv-webpack");
-const CopyPlugin = require('copy-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const CopyPlugin = require("copy-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 
 module.exports = {
-  entry: "./src/index.js",
+  entry: ["babel-polyfill","./src/index.js"],
   output: {
     filename: "bundle.js",
-    publicPath: '/',
-    path: path.resolve(__dirname, 'dist')
+    publicPath: "/",
+    path: path.resolve(__dirname, "dist")
   },
   node: {
     fs: "empty"
@@ -29,7 +29,7 @@ module.exports = {
     new Dotenv(),
     new CleanWebpackPlugin(),
     new CopyPlugin([
-      { from: 'public', to: '.' }
+      { from: "public", to: "." }
     ]),
   ]
 };
